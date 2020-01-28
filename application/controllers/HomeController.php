@@ -4,7 +4,9 @@ class HomeController
 {
     public static function index($req, $resp, $arg)
     {
-        View::render("Products.php");
+        $view = new View();
+        $view->name = "test";
+        $view->render("Products.php");
         return $resp;
     }
 }

@@ -7,6 +7,14 @@
     <title>Product</title>
 </head>
 <body>
-    
+    <?
+        echo $this->name;
+        include_once dirname(__DIR__)."\models\DB connection.php";
+        $db = connection::getInstance();
+        foreach ($db->getConnection()->products as $item)
+        {
+            echo $item["Name"]."\r\t";
+        }
+    ?>
 </body>
 </html>
