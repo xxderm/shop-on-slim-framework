@@ -20,6 +20,10 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
+        'L' => 
+        array (
+            'Lusito\\NotORM\\' => 14,
+        ),
         'F' => 
         array (
             'FastRoute\\' => 10,
@@ -38,6 +42,10 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Lusito\\NotORM\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lusito/notorm/src',
         ),
         'FastRoute\\' => 
         array (
