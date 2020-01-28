@@ -8,12 +8,9 @@
 </head>
 <body>
     <?
-        echo $this->name;
-        include_once dirname(__DIR__)."\models\DB connection.php";
-        $db = connection::getInstance();
-        foreach ($db->getConnection()->products as $item)
+        foreach ($this->production as $item)
         {
-            echo $item["Name"]."\r\t";
+            echo $item["Name"];
         }
     ?>
 </body>
