@@ -1,7 +1,14 @@
-{% extends "base.html" %} {% block title %}{{title}}{% endblock %} {% block content %}
-<ul>
-    {% for item in prod %}
-    <li>{{item.Name}}</li>
-    {% endfor %}
-</ul>
-{% endblock %}
+{% extends "base.html" %} 
+{% block title %}{{title}}{% endblock %} 
+{% block content %} 
+{% for item in prod %}
+<aside>
+    <div class="content-data">
+        <img align="left" hspace="5" src="{{item.Image}}">
+        <p>Название - {{item.Name}}</p>
+        <p>Количество - {{item.Count}}</p>
+        <p>Цена за штуку - {{item.Price}}</p>
+        <p>Описание - {{item.Description}}</p>
+    </div>
+</aside>
+{% endfor %} {% endblock %}

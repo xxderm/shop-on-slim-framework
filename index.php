@@ -6,5 +6,6 @@ $app = new Slim\App();
 
 # Home page
 $app->get('/', HomeController::class . ':index');
+$app->get('/catalog/{id}', HomeController::class . ':fromCatalog');
 
 $app->run();

@@ -1,5 +1,4 @@
 <?php
-include_once (dirname(__DIR__)."\models\View.php");
 include_once dirname(__DIR__)."\models\DB connection.php";
 class HomeController
 {
@@ -19,6 +18,11 @@ class HomeController
                 'title' => 'Production'
                 ));
 
+        return $resp;
+    }
+    public static function fromCatalog($req, $resp, $arg)
+    {
+        echo $arg['id'];
         return $resp;
     }
 }

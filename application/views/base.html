@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>{% block title %} {% endblock %}</title>
-	</head>
-	
-	<body>
-		{% block content %}{% endblock %}
-	</body>
+
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="../../styles/style.css">
+</head>
+
+<body>
+    <header class="header-container clearfix">
+        <div class="logo"></div>
+    </header>
+    {% block content %}{% endblock %}
+</body>
+
 </html>
