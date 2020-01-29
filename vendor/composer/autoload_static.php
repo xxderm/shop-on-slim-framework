@@ -8,21 +8,23 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
 {
     public static $files = array (
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Twig\\' => 5,
+        ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Ctype\\' => 23,
             'Slim\\' => 5,
         ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
-        ),
-        'L' => 
-        array (
-            'Lusito\\NotORM\\' => 14,
         ),
         'F' => 
         array (
@@ -31,6 +33,14 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
     );
 
     public static $prefixDirsPsr4 = array (
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
         'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
@@ -43,10 +53,6 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'Lusito\\NotORM\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/lusito/notorm/src',
-        ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
@@ -54,6 +60,13 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
     );
 
     public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
         'P' => 
         array (
             'Pimple' => 
