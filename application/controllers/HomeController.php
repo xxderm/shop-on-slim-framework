@@ -3,19 +3,22 @@ include_once dirname(__DIR__)."\models\DB connection.php";
 class HomeController
 {
     public $m_twig_container;
-    function __construct($twig)
+    public $m_nav_container;
+    function __construct($container)
     {
-        $this->m_twig_container = $twig;
+        $this->m_twig_container = $container['twig_c'];
+        $this->m_nav_container = $container['nav_bar'];
     }
     public function index($req, $resp, $arg)
     {
         $db = connection::getInstance();
         $data = $db->getConnection()->products;
-        $template = $this->m_twig_container['twig_c']->loadTemplate('ProductsPage.html');
+        $template = $this->m_twig_container->loadTemplate('ProductsPage.html');
         echo $template->render(
             array(
                 'prod' => $data,
-                'title' => 'Production'
+                'title' => 'Production',
+                'nav_list' => $this->m_nav_container
                 ));
         return $resp;
     }

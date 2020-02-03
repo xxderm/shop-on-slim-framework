@@ -7,6 +7,17 @@ require 'vendor/psr/http-message/src/ResponseInterface.php';
 $app = new Slim\App();
 
 $container = $app->getContainer();
+$container['nav_bar'] = function ($c) {
+    $temp = array(
+        array("href" => "index.php", "content" => "products"),
+        array("href" => "", "content" => "cart"),
+        array("href" => "#", "content" => "order history"),
+        array("href" => "#", "content" => "add item to catalog"),
+        array("href" => "#", "content" => "create user"),
+        array("href" => "#", "content" => "login")
+    );
+    return $temp;
+};
 $container['twig_c'] = function ($c)
 {
     Twig_Autoloader::register();
@@ -16,7 +27,7 @@ $container['twig_c'] = function ($c)
 };
 $container['HomeController'] = function ($c)
 {
-    return new HomeController($c['twig_c']);
+    return new HomeController($c);
 };
 
 # Home page

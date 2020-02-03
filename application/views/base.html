@@ -10,8 +10,22 @@
     <header class="header-container clearfix">
         <div class="logo"></div>
     </header>
-    {% block content %}
-    {% endblock %}
+    <main class="main-container">
+        <div class="main-container-header">
+            <img src="images/store.svg">
+            <span>IlyasStore &#9679  {{title}}</span>
+        </div>
+        <div class="main-container-navigation">
+            <ul>
+                {% for item in nav_list %}
+                <li>
+                    <a href="{{item.href}}">{{item.content}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+    {% block content %} {% endblock %}
 </body>
 
 </html>
