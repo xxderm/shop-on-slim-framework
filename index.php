@@ -8,7 +8,7 @@ $app = new Slim\App();
 
 $container = $app->getContainer();
 $container['nav_bar'] = function ($c) {
-    $temp = array(
+    return array(
         array("href" => "index.php", "content" => "products"),
         array("href" => "", "content" => "cart"),
         array("href" => "#", "content" => "order history"),
@@ -16,7 +16,6 @@ $container['nav_bar'] = function ($c) {
         array("href" => "#", "content" => "create user"),
         array("href" => "#", "content" => "login")
     );
-    return $temp;
 };
 $container['twig_c'] = function ($c)
 {
