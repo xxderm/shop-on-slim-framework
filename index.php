@@ -9,10 +9,10 @@ $app = new Slim\App();
 $container = $app->getContainer();
 $container['nav_bar'] = function ($c) {
     return array(
-        array("href" => "index.php", "content" => "products"),
-        array("href" => "", "content" => "cart"),
-        array("href" => "#", "content" => "order history"),
-        array("href" => "#", "content" => "add item to catalog"),
+        array("href" => "/", "content" => "Products"),
+        array("href" => "#", "content" => "Cart"),
+        array("href" => "#", "content" => "Order history"),
+        array("href" => "#", "content" => "add item to products"),
         array("href" => "#", "content" => "create user"),
         array("href" => "#", "content" => "login")
     );
