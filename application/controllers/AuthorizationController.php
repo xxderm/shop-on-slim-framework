@@ -20,7 +20,7 @@ class AuthorizationController
     }
     public function postSignUp($req, $resp, $arg)
     {
-
+        var_dump($req->getParams());
     }
     public function getSignIn($req, $resp, $arg)
     {
