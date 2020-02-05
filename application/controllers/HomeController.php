@@ -4,10 +4,12 @@ class HomeController
 {
     public $m_twig_container;
     public $m_nav_container;
+    public $m_csrf_container;
     function __construct($container)
     {
         $this->m_twig_container = $container['twig_c'];
         $this->m_nav_container = $container['nav_bar'];
+        $this->m_csrf_container = $container['csrf'];
     }
     public function index($req, $resp, $arg)
     {
