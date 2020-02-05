@@ -24,7 +24,14 @@ class AuthorizationController
     }
     public function getSignIn($req, $resp, $arg)
     {
-
+        $template = $this->m_twig_container->loadTemplate('SignIn.html');
+        echo $template->render(
+            array(
+                'title' => 'SignIn',
+                'nav_list' => $this->m_nav_container
+            )
+        );
+        return $resp;
     }
     public  function postSignIn($req, $resp, $arg)
     {
