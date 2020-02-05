@@ -118,3 +118,31 @@ aside p {
     display: table-row;
     color: bisque;
 }
+
+.form-block form {
+    display: block;
+    text-align: center;
+}
+
+form {
+    border: 3px solid #3d3029;
+    width: 300px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding-bottom: 40px;
+}
+
+form label {
+    color: white;
+}
+
+form input {
+    width: 250px;
+}
+
+form h3 {
+    color: white;
+    background-color: #2e241f;
+}

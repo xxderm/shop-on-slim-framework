@@ -6,7 +6,6 @@ require 'vendor/psr/http-message/src/ServerRequestInterface.php';
 require 'vendor/psr/http-message/src/ResponseInterface.php';
 
 $app = new Slim\App();
-
 $container = $app->getContainer();
 $container['nav_bar'] = function ($c) {
     return array(
