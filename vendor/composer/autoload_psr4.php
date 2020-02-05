@@ -6,6 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Zend\\Stdlib\\' => array($vendorDir . '/zendframework/zend-stdlib/src'),
+    'Zend\\Session\\' => array($vendorDir . '/zendframework/zend-session/src'),
+    'Zend\\Permissions\\Acl\\' => array($vendorDir . '/zendframework/zend-permissions-acl/src'),
+    'Zend\\Hydrator\\' => array($vendorDir . '/zendframework/zend-hydrator/src'),
+    'Zend\\EventManager\\' => array($vendorDir . '/zendframework/zend-eventmanager/src'),
+    'Zend\\Authentication\\' => array($vendorDir . '/zendframework/zend-authentication/src'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
     'Slim\\Csrf\\' => array($vendorDir . '/slim/csrf/src'),
@@ -14,4 +20,5 @@ return array(
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'App\\' => array($baseDir . '/application'),
 );
