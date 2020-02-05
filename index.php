@@ -5,35 +5,9 @@ require 'vendor/autoload.php';
 require 'vendor/psr/http-message/src/ServerRequestInterface.php';
 require 'vendor/psr/http-message/src/ResponseInterface.php';
 
-$app = new Slim\App(
-    [
-        'settings' => [
-            // Slim Settings
-            'determineRouteBeforeAppMiddleware' => false,
-            'displayErrorDetails' => true,
-            'db' => [
-                'driver' => 'mysql',
-                'host' => 'localhost',
-                'database' => 'shop',
-                'username' => 'root',
-                'password' => '',
-                'charset'   => 'utf8',
-                'collation' => 'utf8_unicode_ci',
-                'prefix'    => '',
-            ]
-        ],
-    ]
-);
+$app = new Slim\App();
 
 $container = $app->getContainer();
-$container['db'] = function ($c)
-{
-    $capsule = new  \Illuminate\Database\Capsule\Manager;
-    $capsule->addConnection($c['settings']['db']);
-    $capsule->setAsGlobal();
-    $capsule->bootEloquent();
-    return $capsule;
-};
 $container['nav_bar'] = function ($c) {
     return array(
         array("href" => "/", "content" => "Products"),

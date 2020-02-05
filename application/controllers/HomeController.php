@@ -6,7 +6,6 @@ class HomeController
     public $m_nav_container;
     function __construct($container)
     {
-        var_dump($container['db']);
         $this->m_twig_container = $container['twig_c'];
         $this->m_nav_container = $container['nav_bar'];
     }
