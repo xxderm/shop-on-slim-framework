@@ -8,10 +8,6 @@ require 'vendor/psr/http-message/src/ResponseInterface.php';
 $app = new Slim\App();
 
 $container = $app->getContainer();
-$container['csrf'] = function ($c)
-{
-    return new csrf\src\Guard;
-};
 $container['nav_bar'] = function ($c) {
     return array(
         array("href" => "/", "content" => "Products"),
