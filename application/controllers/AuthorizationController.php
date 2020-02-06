@@ -20,9 +20,8 @@ class AuthorizationController
     }
     public function postSignUp($req, $resp, $arg)
     {
-        //var_dump($req->getParams());
-        $resp->withRedirect('/');
-        return $resp;
+        var_dump($req->getParams());
+        return $resp->withRedirect('/');
     }
     public function getSignIn($req, $resp, $arg)
     {
