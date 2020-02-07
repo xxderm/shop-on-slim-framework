@@ -56,11 +56,20 @@ $container['nav_bar'] = function ($c)
         array("href" => "/SignIn", "content" => "Sign In")
     );
 };
+$container['auth'] = function ($c)
+{
+    return new \App\Auth\Auth;
+};
 $container['twig_c'] = function ($c)
 {
     Twig_Autoloader::register();
     $loader = new Twig_Loader_Filesystem('application/views');
     $twig = new Twig_Environment($loader, array('cache' => false));
+    $twig->addGlobal('auth',
+        [
+            'check' => $c['auth']->check(),
+            'user' => $c['auth']->user()
+        ]);
     return $twig;
 };
 $container['HomeController'] = function ($c)
@@ -70,10 +79,6 @@ $container['HomeController'] = function ($c)
 $container['SignUpController'] = function ($c)
 {
     return new SignUpController($c);
-};
-$container['auth'] = function ($c)
-{
-    return new \App\Auth\Auth;
 };
 
 # Middleware
