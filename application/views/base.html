@@ -1,35 +1,52 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    {% block head %}
-    <title>
-        {% block title %}{% endblock %}
-    </title>
-    <link rel="stylesheet" href="../../styles/style.css"> {% endblock %}
-</head>
+	<head>
+		{% block head %}
+			<title>
+				{% block title %}{% endblock %}
+			</title>
+			<link rel="stylesheet" href="../../styles/style.css">
+		{% endblock %}
+	</head>
 
-<body>
-    <header class="header-container clearfix">
-        <div class="logo"></div>
-    </header>
-    <main class="main-container">
-        <div class="main-container-header">
-            <img src="../../images/store.svg">
-            <span>IlyasStore &#9679
+	<body>
+		<header class="header-container clearfix">
+			<div class="logo"></div>
+		</header>
+		<main class="main-container">
+			<div class="main-container-header">
+				<img src="../../images/store.svg">
+				<span>IlyasStore &#9679
 					{{title}}</span>
-        </div>
-        <div class="main-container-navigation">
-            <ul>
-                {% for item in nav_list %}
-                <li>
-                    <a href="{{item.href}}">{{item.content}}</a>
-                </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </main>
-    {% block content %}{% endblock %}
-</body>
+			</div>
+			<div class="main-container-navigation">
+				<ul class="topmenu">
+					{% for item in nav_list %}
+						{% if item.content == "Products" %}
+
+							<li>
+								<a class="submenu-link" href="{{item.href}}">{{item.content}}</a>
+								<ul class="submenu">
+									{% for cat in catalog_buff %}
+										<li>
+											<a href="{{cat.id}}">{{cat.Name}}</a>
+										</li>
+									{% endfor %}
+								</ul>
+							</li>
+
+
+						{% else %}
+							<li>
+								<a href="{{item.href}}">{{item.content}}</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+		</main>
+		{% block content %}{% endblock %}
+	</body>
 
 </html>

@@ -14,24 +14,28 @@ class HomeController
     public function index($req, $resp, $arg)
     {
         $data = $this->db->getConnection()->products;
+        $catalogName = $this->db->getConnection()->catalog;
         $template = $this->m_twig_container->loadTemplate('ProductsPage.html');
         echo $template->render(
             array(
                 'prod' => $data,
                 'title' => 'Production',
-                'nav_list' => $this->m_nav_container
+                'nav_list' => $this->m_nav_container,
+                'catalog_buff' => $catalogName
                 ));
         return $resp;
     }
     public function fromCatalog($req, $resp, $arg)
     {
         $dataFromCatalog = $this->db->getConnection()->products()->select("*")->where("Catalog_id = ?", $arg['id']);
+        $catalogName = $this->db->getConnection()->catalog;
         $template = $this->m_twig_container->loadTemplate('ProductsPage.html');
         echo $template->render(
             array(
                 'prod' => $dataFromCatalog,
                 'title' => 'Production',
-                'nav_list' => $this->m_nav_container
+                'nav_list' => $this->m_nav_container,
+                'catalog_buff' => $catalogName
             ));
         return $resp;
     }
