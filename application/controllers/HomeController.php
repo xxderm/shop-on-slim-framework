@@ -4,15 +4,16 @@ class HomeController
 {
     public $m_twig_container;
     public $m_nav_container;
+    public $db;
     function __construct($container)
     {
         $this->m_twig_container = $container['twig_c'];
         $this->m_nav_container = $container['nav_bar'];
+        $this->db = connection::getInstance();
     }
     public function index($req, $resp, $arg)
     {
-        $db = connection::getInstance();
-        $data = $db->getConnection()->products;
+        $data = $this->db->getConnection()->products;
         $template = $this->m_twig_container->loadTemplate('ProductsPage.html');
         echo $template->render(
             array(
@@ -22,9 +23,16 @@ class HomeController
                 ));
         return $resp;
     }
-    public static function fromCatalog($req, $resp, $arg)
+    public function fromCatalog($req, $resp, $arg)
     {
-        echo $arg['id'];
+        $dataFromCatalog = $this->db->getConnection()->products()->select("*")->where("Catalog_id = ?", $arg['id']);
+        $template = $this->m_twig_container->loadTemplate('ProductsPage.html');
+        echo $template->render(
+            array(
+                'prod' => $dataFromCatalog,
+                'title' => 'Production',
+                'nav_list' => $this->m_nav_container
+            ));
         return $resp;
     }
 }
