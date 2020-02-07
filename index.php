@@ -4,7 +4,7 @@ include_once "application/controllers/AuthorizationController.php";
 require 'vendor/autoload.php';
 require 'vendor/psr/http-message/src/ServerRequestInterface.php';
 require 'vendor/psr/http-message/src/ResponseInterface.php';
-
+session_start();
 $app = new Slim\App(
     [
         'settings' =>
