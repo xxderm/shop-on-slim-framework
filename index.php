@@ -37,6 +37,10 @@ $container['db'] = function ($c) use ($capsule)
 {
     return $capsule;
 };
+$container['validator'] = function ($container)
+{
+    return new App\Validation\Validator;
+};
 $container['nav_bar'] = function ($c)
 {
     return array(

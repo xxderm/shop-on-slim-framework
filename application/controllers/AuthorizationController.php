@@ -1,15 +1,18 @@
 <?php
 use App\Models\User;
+use Respect\Validation\Validator as v;
 include_once dirname(__DIR__)."\models\DB connection.php";
 class AuthorizationController
 {
     public $m_twig_container;
     public $m_nav_container;
+    public $m_val_con;
     public $db;
     function __construct($container)
     {
         $this->m_twig_container = $container['twig_c'];
         $this->m_nav_container = $container['nav_bar'];
+        $this->m_val_con = $container['validator'];
         $this->db = connection::getInstance();
     }
     public function getSignUp($req, $resp, $arg)
@@ -26,12 +29,24 @@ class AuthorizationController
     }
     public function postSignUp($req, $resp, $arg)
     {
+        $validation = $this->m_val_con->validate($req,
+            [
+                'Email' => v::notEmpty(),
+                'Name' => v::notEmpty(),
+                'Password' => v::notEmpty()
+            ]);
+
+        if($this->m_val_con->failed())
+        {
+            return $resp->withRedirect('/SignUp');
+        }
+
         User::create(
             [
-                'email' => $req->getParam('email'),
-                'fname' => $req->getParam('name'),
-                'password' => password_hash($req->getParam('password'), PASSWORD_DEFAULT),
-                'role' => 'member'
+                'Fname' => $req->getParam('Name'),
+                'Email' => $req->getParam('Email'),
+                'Password' => password_hash($req->getParam('Password'), PASSWORD_DEFAULT),
+                'Role' => 'member'
             ]
         );
         return $resp->withRedirect('/');

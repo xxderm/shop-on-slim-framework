@@ -7,9 +7,9 @@ class User extends Model
     public $timestamps = false;
     protected $fillable =
         [
-            'fname',
-            'email',
-            'password',
-            'role'
+            'Fname',
+            'Email',
+            'Password',
+            'Role'
         ];
 }
