@@ -49,7 +49,7 @@ class AuthorizationController
             [
                 'Fname' => $req->getParam('Name'),
                 'Email' => $req->getParam('Email'),
-                'Password' => password_hash($req->getParam('Password'), PASSWORD_DEFAULT),
+                'Password' => password_hash($req->getParam('Password'), PASSWORD_DEFAULT, ['cost' => 12,]),
                 'Role' => 'member'
             ]
         );
@@ -71,9 +71,11 @@ class AuthorizationController
     public  function postSignIn($req, $resp, $arg)
     {
         $auth = $this->auth->attempt(
-            $req->getParam('email'),
-            $req->getParam('password')
+            $req->getParam('Email'),
+            $req->getParam('Password')
         );
-        var_dump($auth);
+        if(!$auth)
+            return $resp->withRedirect('/SignIn');
+        return $resp->withRedirect('/');
     }
 }

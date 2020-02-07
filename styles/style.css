@@ -161,7 +161,7 @@ form h3 {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: bold;
-    color: #643c24;
+    color: #ff7017;
 }
 
 .topmenu li a:hover {
@@ -175,12 +175,13 @@ form h3 {
 }
 
 .submenu {
-    background: #a70202d2;
+    background: #ff9966;
     position: absolute;
-    left: 0;
-    top: 100%;
+    float: left;
+    right: 14.5px;
+    top: 32px;
     z-index: 5;
-    width: 150px;
+    width: 50px;
     opacity: 0;
     transform: scaleY(0);
     transform-origin: 0 0;
@@ -188,11 +189,22 @@ form h3 {
 }
 
 .submenu a {
-    color: white;
+    color: black;
     text-align: center;
-    padding: 12px 15px;
+    /* padding: 12px 15px;*/
     font-size: 13px;
-    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.993);
+}
+
+.submenu li {
+    width: 100%;
+    margin-left: -32px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.submenu li:hover {
+    background-color: wheat;
 }
 
 .submenu li:last-child a {

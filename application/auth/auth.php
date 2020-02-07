@@ -5,10 +5,10 @@ class Auth
 {
     public function attempt($email, $password)
     {
-        $user = User::where('email', $email)->first();
+        $user = User::where('Email', $email)->first();
         if(!$user)
             return false;
-        if(password_verify($password, $user->password))
+        if(password_verify($password, $user->Password))
         {
             $_SESSION['user'] = $user;
             return true;
