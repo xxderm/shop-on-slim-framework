@@ -53,6 +53,9 @@ class AuthorizationController
                 'Role' => 'member'
             ]
         );
+
+        $this->auth->attempt($req->getParam('Email'), $req->getParam('Password'));
+
         return $resp->withRedirect('/');
     }
     public function getSignIn($req, $resp, $arg)
@@ -76,6 +79,11 @@ class AuthorizationController
         );
         if(!$auth)
             return $resp->withRedirect('/SignIn');
+        return $resp->withRedirect('/');
+    }
+    public function getSignOut($req, $resp, $arg)
+    {
+        $this->auth->logout();
         return $resp->withRedirect('/');
     }
 }

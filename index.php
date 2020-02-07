@@ -101,5 +101,9 @@ $app->post('/SignUp', '\AuthorizationController:postSignUp');
 $app->get('/SignIn', '\AuthorizationController:getSignIn')->setName('auth.signin');
 $app->post('/SignIn', '\AuthorizationController:postSignIn');
 
+# SignOut page
+$app->get('/SignOut', '\AuthorizationController:getSignOut')->setName('auth.signout');
+
+
 
 $app->run();
