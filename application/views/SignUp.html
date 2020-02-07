@@ -37,6 +37,9 @@
 				<input type="Password" name="Password" id="Password" class="form-control">
 			</div><br/>
 			<button type="submit" class="btn">SignUp</button>
+
+			{{ csrf.field | raw }}
+
 		</form>
 	</div>
 {% endblock %}
