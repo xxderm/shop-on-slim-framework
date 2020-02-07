@@ -8,11 +8,13 @@ class AuthorizationController
     public $m_nav_container;
     public $m_val_con;
     public $db;
+    public $csrf;
     function __construct($container)
     {
         $this->m_twig_container = $container['twig_c'];
         $this->m_nav_container = $container['nav_bar'];
         $this->m_val_con = $container['validator'];
+        $this->csrf = $container['csrf'];
         $this->db = connection::getInstance();
     }
     public function getSignUp($req, $resp, $arg)

@@ -12,6 +12,7 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
         'e40631d46120a9c38ea139981f8dab26' => __DIR__ . '/..' . '/ircmaxell/password-compat/lib/password.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         'be01b9b16925dcb22165c40b46681ac6' => __DIR__ . '/..' . '/wp-cli/php-cli-tools/lib/cli/cli.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
     );
 
@@ -35,6 +36,7 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\Translation\\' => 30,
             'Symfony\\Component\\Translation\\' => 30,
+            'Slim\\Psr7\\' => 10,
             'Slim\\Csrf\\' => 10,
             'Slim\\' => 5,
         ),
@@ -59,6 +61,7 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
         ),
         'F' => 
         array (
+            'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
         ),
         'D' => 
@@ -120,6 +123,10 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
+        'Slim\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/psr7/src',
+        ),
         'Slim\\Csrf\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/csrf/src',
@@ -169,6 +176,10 @@ class ComposerStaticInitd7b281f7e55ce8d32ddd93cb7fa52bca
         'Illuminate\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
+        ),
+        'Fig\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fig/http-message-util/src',
         ),
         'FastRoute\\' => 
         array (

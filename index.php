@@ -33,6 +33,10 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 # Containers
+$container['csrf'] = function ($c)
+{
+    return new \Slim\Csrf\Guard;
+};
 $container['db'] = function ($c) use ($capsule)
 {
     return $capsule;
@@ -67,6 +71,9 @@ $container['SignUpController'] = function ($c)
 {
     return new SignUpController($c);
 };
+
+# csrf
+$app->add($container->csrf);
 
 # Home page
 $app->get('/', '\HomeController:index');
