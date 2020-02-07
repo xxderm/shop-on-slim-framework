@@ -9,12 +9,14 @@ class AuthorizationController
     public $m_val_con;
     public $db;
     public $csrf;
+    public $auth;
     function __construct($container)
     {
         $this->m_twig_container = $container['twig_c'];
         $this->m_nav_container = $container['nav_bar'];
         $this->m_val_con = $container['validator'];
         $this->csrf = $container['csrf'];
+        $this->auth = $container['auth'];
         $this->db = connection::getInstance();
     }
     public function getSignUp($req, $resp, $arg)
@@ -68,6 +70,10 @@ class AuthorizationController
     }
     public  function postSignIn($req, $resp, $arg)
     {
-
+        $auth = $this->auth->attempt(
+            $req->getParam('email'),
+            $req->getParam('password')
+        );
+        var_dump($auth);
     }
 }

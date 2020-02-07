@@ -71,6 +71,10 @@ $container['SignUpController'] = function ($c)
 {
     return new SignUpController($c);
 };
+$container['auth'] = function ($c)
+{
+    return new \App\Auth\Auth;
+};
 
 # Middleware
 $app->add(new \App\Middleware\CsrfViewMiddleware($container));
