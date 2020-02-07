@@ -24,14 +24,17 @@ $app = new Slim\App(
         ]
     ]
 );
-
 $container = $app->getContainer();
-$container['db'] = function ($c)
+
+# ORM
+$capsule = new \Illuminate\Database\Capsule\Manager;
+$capsule->addConnection($container['settings']['db']);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+
+# Containers
+$container['db'] = function ($c) use ($capsule)
 {
-    $capsule = new \Illuminate\Database\Capsule\Manager;
-    $capsule->addConnection($c['settings']['db']);
-    $capsule->setAsGlobal();
-    $capsule->bootEloquent();
     return $capsule;
 };
 $container['nav_bar'] = function ($c)
@@ -40,9 +43,9 @@ $container['nav_bar'] = function ($c)
         array("href" => "/", "content" => "Products"),
         array("href" => "#", "content" => "Cart"),
         array("href" => "#", "content" => "Orders"),
-        array("href" => "#", "content" => "add item to products"),
-        array("href" => "/SignUp", "content" => "SignUp"),
-        array("href" => "/SignIn", "content" => "SignIn")
+        array("href" => "#", "content" => "Append"),
+        array("href" => "/SignUp", "content" => "Sign Up"),
+        array("href" => "/SignIn", "content" => "Sign In")
     );
 };
 $container['twig_c'] = function ($c)

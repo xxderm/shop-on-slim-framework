@@ -1,4 +1,5 @@
 <?php
+use App\Models\User;
 include_once dirname(__DIR__)."\models\DB connection.php";
 class AuthorizationController
 {
@@ -25,7 +26,14 @@ class AuthorizationController
     }
     public function postSignUp($req, $resp, $arg)
     {
-        var_dump($req->getParams());
+        User::create(
+            [
+                'email' => $req->getParam('email'),
+                'fname' => $req->getParam('name'),
+                'password' => password_hash($req->getParam('password'), PASSWORD_DEFAULT),
+                'role' => 'member'
+            ]
+        );
         return $resp->withRedirect('/');
     }
     public function getSignIn($req, $resp, $arg)
