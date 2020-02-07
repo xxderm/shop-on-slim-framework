@@ -1,5 +1,6 @@
 <?php
 include_once dirname(__DIR__)."\models\DB connection.php";
+include_once dirname(__DIR__)."\models\User.php";
 class HomeController
 {
     public $m_twig_container;
