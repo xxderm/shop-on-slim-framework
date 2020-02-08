@@ -29,4 +29,19 @@ class AppendController
             ));
         return $resp;
     }
+    public function postAppend($req, $resp, $arg)
+    {
+        Product::create(
+            [
+                'Catalog_id' => $req->getParam('Catalog'),
+                'Name' => $req->getParam('Name'),
+                'Count' => $req->getParam('Count'),
+                'Price' => $req->getParam('Price'),
+                'Image' => $req->getParam('Image'),
+                'Description' => $req->getParam('Description'),
+                'Discount' => $req->getParam('Discount')
+            ]
+        );
+        return $resp->withRedirect('/');
+    }
 }

@@ -16,7 +16,11 @@
 					<label for="Catalog">
 						Каталог
 					</label><br/>
-					<input type="text" name="Catalog" id="Catalog" class="form-control">
+					<select name="Catalog" id="Catalog" class="form-control">
+						{% for cat in catalog_buff %}
+							<option value="{{ cat.id }}">{{ cat.Name }}</option>
+						{% endfor %}
+					</select>
 				</div>
 				<div class="form-group">
 					<label for="Name">
@@ -29,8 +33,32 @@
 						Количество
 					</label><br/>
 					<input type="text" name="Count" id="Count" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="Price">
+						Цена
+					</label><br/>
+					<input type="text" name="Price" id="Price" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="Image">
+						Картинка
+					</label><br/>
+					<input style="color:yellow;" type="file" name="Image" id="Image" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="Description">
+						Описание
+					</label><br/>
+					<textarea style="resize:none;" name="Description" id="Description" class="form-control" cols="35" rows="10"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="Discount">
+						Скидка
+					</label><br/>
+					<input type="text" name="Discount" id="Discount" placeholder="0% - 100%" class="form-control">
 				</div><br/>
-				<button type="submit" class="btn">SignUp</button>
+				<button type="submit" class="btn">Append</button>
 
 				{{ csrf.field | raw }}
 

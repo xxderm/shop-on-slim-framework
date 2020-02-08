@@ -128,5 +128,6 @@ $app->get('/Orders', '\OrderController:index')->setName('usr.orders');
 
 # Append page
 $app->get('/Append', '\AppendController:index')->setName('usr.append');
+$app->post('/Append', '\AppendController:postAppend');
 
 $app->run();

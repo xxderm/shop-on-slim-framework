@@ -13,13 +13,14 @@
 	{% for item in prod %}
 		<aside>
 			<div class="content-data" id="{{item.id}}">
-				<img align="left" hspace="5" src="{{item.Image}}">
+				<img align="left" hspace="5" src="../../images/{{item.Image}}">
 				<p>Название -
 					{{item.Name}}</p>
 				<p>Количество -
 					{{item.Count}}</p>
 				<p>Цена за штуку -
-					{{item.Price}}</p>
+					{{item.Price}}
+					рублей</p>
 				<p>Описание -
 					{{item.Description}}</p>
 				{% if auth.check %}
