@@ -1,6 +1,7 @@
 <?php
+use App\Models\Product;
 include_once dirname(__DIR__)."\models\DB connection.php";
-class OrderController
+class AppendController
 {
     public $m_twig_container;
     public $m_nav_container;
@@ -18,21 +19,13 @@ class OrderController
     public function index($req, $resp, $arg)
     {
         $catalogName = $this->db->getConnection()->catalog;
-        $template = $this->m_twig_container->loadTemplate('Order.html');
-
-
-        $res = $this->capsule->table('products')
-            ->join('orders', 'products.id', '=', 'orders.Product_id')
-            ->select('products.Name', 'products.Price', 'orders.Date')
-            ->where('orders.User_id', $this->auth->user()['id'])
-            ->get();
+        $template = $this->m_twig_container->loadTemplate('Append.html');
 
         echo $template->render(
             array(
-                'title' => 'Orders',
+                'title' => 'Append',
                 'nav_list' => $this->m_nav_container,
-                'catalog_buff' => $catalogName,
-                'order_content' => $res
+                'catalog_buff' => $catalogName
             ));
         return $resp;
     }

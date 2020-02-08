@@ -3,6 +3,7 @@ include_once "application/controllers/HomeController.php";
 include_once "application/controllers/AuthorizationController.php";
 include_once "application/controllers/CartController.php";
 include_once "application/controllers/OrderController.php";
+include_once "application/controllers/AppendController.php";
 require 'vendor/autoload.php';
 require 'vendor/psr/http-message/src/ServerRequestInterface.php';
 require 'vendor/psr/http-message/src/ResponseInterface.php';
@@ -53,7 +54,7 @@ $container['nav_bar'] = function ($c)
         array("href" => "/", "content" => "Products"),
         array("href" => "/Cart", "content" => "Cart"),
         array("href" => "/Orders", "content" => "Orders"),
-        array("href" => "#", "content" => "Append"),
+        array("href" => "/Append", "content" => "Append"),
         array("href" => "/SignUp", "content" => "Sign Up"),
         array("href" => "/SignIn", "content" => "Sign In")
     );
@@ -90,6 +91,10 @@ $container['OrderController'] = function ($c)
 {
     return new OrderController($c);
 };
+$container['AppendController'] = function ($c)
+{
+    return new AppendController($c);
+};
 
 # Middleware
 $app->add(new \App\Middleware\CsrfViewMiddleware($container));
@@ -120,5 +125,8 @@ $app->get('/ToOrder/{id}/{return}', '\CartController:toOrder');
 
 # Orders page
 $app->get('/Orders', '\OrderController:index')->setName('usr.orders');
+
+# Append page
+$app->get('/Append', '\AppendController:index')->setName('usr.append');
 
 $app->run();

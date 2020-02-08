@@ -58,6 +58,7 @@ class CartController
                 'Product_id' => $arg['id']
             ]
         );
-        return $resp->withRedirect('/Cart?#'.($arg['return']));
+        $this->capsule->table('cart')->where('id', $arg['return'])->delete();
+        return $resp->withRedirect('/Cart?#'.($arg['return'] - 1));
     }
 }

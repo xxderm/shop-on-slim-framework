@@ -8,10 +8,32 @@
 {% endblock %}
 {% block content %}
 	{% if auth.check %}
-		<table>
-			<thead></thead>
-			<tbody></tbody>
-		</table>
+		<center>
+			<table width="850px" border="2px solid white" style="color:white;">
+				<thead>
+					<tr style="color: whitesmoke; align-content: center; align-items: center;text-align: center;">
+						<td>Name</td>
+						<td>Price</td>
+						<td>Date</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in order_content %}
+						<tr style="text-align:center;">
+							<td>
+								{{ item.Name }}
+							</td>
+							<td>
+								{{ item.Price }}
+							</td>
+							<td>
+								{{ item.Date }}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</center>
 	{% else %}
 		<center>
 			<span style="color:yellow; font-size:30px;" class="cart-attention">
