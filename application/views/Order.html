@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}
+	{{title}}
+{% endblock %}
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="../../styles/orders.css">
+{% endblock %}
+{% block content %}
+	{% if auth.check %}
+		<table>
+			<thead></thead>
+			<tbody></tbody>
+		</table>
+	{% else %}
+		<center>
+			<span style="color:yellow; font-size:30px;" class="cart-attention">
+				История заказов доступна только для авторизованных пользователей!
+			</span>
+		</center>
+	{% endif %}
+{% endblock %}
