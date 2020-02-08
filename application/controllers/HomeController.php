@@ -16,6 +16,7 @@ class HomeController
         $data = $this->db->getConnection()->products;
         $catalogName = $this->db->getConnection()->catalog;
         $template = $this->m_twig_container->loadTemplate('ProductsPage.html');
+
         echo $template->render(
             array(
                 'prod' => $data,

@@ -19,7 +19,17 @@
 					<p>Количество -
 						{{item.Count}}</p>
 					<p>Цена за штуку -
-						{{item.Price}}</p>
+						{% if item.Discount > 0 %}
+							<strike>{{ item.Price + (item.Price / item.Discount) }}
+							</strike>
+							<b style="color:green; font-size:24px;">
+								{{item.Price}}</b>
+							рублей
+						{% else %}
+							{{item.Price}}
+							рублей
+						{% endif %}
+					</p>
 					<p>Описание -
 						{{item.Description}}</p>
 					<p>

@@ -1,28 +1,37 @@
 {% extends "base.html" %}
-
 {% block title %}
 	{{title}}
 {% endblock %}
-
 {% block head %}
 	{{ parent() }}
 	<link rel="stylesheet" href="../../styles/catalog-border.css">
 {% endblock %}
-
 {% block content %}
 	{% for item in prod %}
 		<aside>
 			<div class="content-data" id="{{item.id}}">
 				<img align="left" hspace="5" src="../../images/{{item.Image}}">
-				<p>Название -
-					{{item.Name}}</p>
+				<p>
+					{{item.Name}}
+				</p>
 				<p>Количество -
-					{{item.Count}}</p>
+					{{item.Count}}
+				</p>
 				<p>Цена за штуку -
-					{{item.Price}}
-					рублей</p>
+					{% if item.Discount > 0 %}
+						<strike>{{ item.Price + (item.Price / item.Discount) }}
+						</strike>
+						<b style="color:green; font-size:24px;">
+							{{item.Price}}</b>
+						рублей
+					{% else %}
+						{{item.Price}}
+						рублей
+					{% endif %}
+				</p>
 				<p>Описание -
-					{{item.Description}}</p>
+					{{item.Description}}
+				</p>
 				{% if auth.check %}
 					<p>
 						<a style="color:yellow;" href="/InsertToCart/{{ item.id }}">Добавить в корзину</a>

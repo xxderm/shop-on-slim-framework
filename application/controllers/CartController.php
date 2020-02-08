@@ -22,7 +22,7 @@ class CartController
         $catalogName = $this->db->getConnection()->catalog;
         $res = $this->capsule->table('products')
                              ->join('cart', 'products.id', '=', 'cart.Product_id')
-                             ->select('products.Name', 'products.Image', 'products.Price', 'products.Count', 'products.Description', 'cart.id', 'cart.Product_id')
+                             ->select('products.Name', 'products.Image', 'products.Price', 'products.Count', 'products.Description', 'products.Discount', 'cart.id', 'cart.Product_id')
                              ->where('cart.User_id', $this->auth->user()['id'])
                              ->get();
         $template = $this->m_twig_container->loadTemplate('Cart.html');
@@ -52,6 +52,7 @@ class CartController
     }
     public function toOrder($req, $resp, $arg)
     {
+        $this->capsule->table('products')->where('id', $arg['id'])->decrement('Count', 1);
         Order::create(
             [
                 'User_id' => $this->auth->user()['id'],
