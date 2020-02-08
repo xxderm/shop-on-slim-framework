@@ -58,6 +58,6 @@ class CartController
                 'Product_id' => $arg['id']
             ]
         );
-        return $resp->withRedirect('/Cart?#'.($arg['return'] - 1));
+        return $resp->withRedirect('/Cart?#'.($arg['return']));
     }
 }
