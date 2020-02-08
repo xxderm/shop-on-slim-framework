@@ -110,5 +110,7 @@ $app->get('/SignOut', '\AuthorizationController:getSignOut')->setName('auth.sign
 # Cart page
 $app->get('/Cart', '\CartController:getCart')->setName('usr.cart');
 $app->get('/InsertToCart/{id}', '\CartController:Insert');
+$app->get('/EraseFromCart/{id}', '\CartController:Erase');
+$app->get('/ToOrder/{id}/{return}', '\CartController:toOrder');
 
 $app->run();

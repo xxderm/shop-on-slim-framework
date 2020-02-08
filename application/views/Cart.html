@@ -12,7 +12,7 @@
 	{% if auth.check %}
 		{% for item in cart_content %}
 			<aside>
-				<div class="content-data">
+				<div class="content-data" id="{{item.id}}">
 					<img align="left" hspace="5" src="{{item.Image}}">
 					<p>Название -
 						{{item.Name}}</p>
@@ -22,6 +22,12 @@
 						{{item.Price}}</p>
 					<p>Описание -
 						{{item.Description}}</p>
+					<p>
+						<a style="color:yellow;" href="/ToOrder/{{item.Product_id}}/{{item.id}}">Заказать</a>
+					</p>
+					<p>
+						<a style="color:red;" href="/EraseFromCart/{{item.id}}">Удалить</a>
+					</p>
 				</div>
 			</aside>
 		{% endfor %}

@@ -1,4 +1,6 @@
 <?php
+use App\Models\Cart;
+use App\Models\Order;
 include_once dirname(__DIR__)."\models\DB connection.php";
 class CartController
 {
@@ -20,7 +22,7 @@ class CartController
         $catalogName = $this->db->getConnection()->catalog;
         $res = $this->capsule->table('products')
                              ->join('cart', 'products.id', '=', 'cart.Product_id')
-                             ->select('products.*')
+                             ->select('products.Name', 'products.Image', 'products.Price', 'products.Count', 'products.Description', 'cart.id', 'cart.Product_id')
                              ->where('cart.User_id', $this->auth->user()['id'])
                              ->get();
         $template = $this->m_twig_container->loadTemplate('Cart.html');
@@ -35,11 +37,27 @@ class CartController
     }
     public function Insert($req, $resp, $arg)
     {
-        echo $arg['id'];
+        Cart::create(
+            [
+                'Product_id' => $arg['id'],
+                'User_id' => $this->auth->user()['id']
+            ]
+        );
         return $resp->withRedirect('/#'.$arg['id']);
     }
     public function Erase($req, $resp, $arg)
     {
-        return $resp->withRedirect('/');
+        $this->capsule->table('cart')->where('id', $arg['id'])->delete();
+        return $resp->withRedirect('/Cart?#'.($arg['id'] - 1));
+    }
+    public function toOrder($req, $resp, $arg)
+    {
+        Order::create(
+            [
+                'User_id' => $this->auth->user()['id'],
+                'Product_id' => $arg['id']
+            ]
+        );
+        return $resp->withRedirect('/Cart?#'.($arg['return'] - 1));
     }
 }
