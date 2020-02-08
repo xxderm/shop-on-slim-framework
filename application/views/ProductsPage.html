@@ -12,7 +12,7 @@
 {% block content %}
 	{% for item in prod %}
 		<aside>
-			<div class="content-data">
+			<div class="content-data" id="{{item.id}}">
 				<img align="left" hspace="5" src="{{item.Image}}">
 				<p>Название -
 					{{item.Name}}</p>
@@ -22,6 +22,11 @@
 					{{item.Price}}</p>
 				<p>Описание -
 					{{item.Description}}</p>
+				{% if auth.check %}
+					<p>
+						<a style="color:yellow;" href="/InsertToCart/{{ item.id }}">Добавить в корзину</a>
+					</p>
+				{% endif %}
 			</div>
 		</aside>
 	{% endfor %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+	{{title}}
+{% endblock %}
+{% block head %}
+	{{ parent() }}
+	<link rel="stylesheet" href="../../styles/cart-border.css">
+
+{% endblock %}
+{% block content %}
+
+	{% if auth.check %}
+		{% for item in cart_content %}
+			<aside>
+				<div class="content-data">
+					<img align="left" hspace="5" src="{{item.Image}}">
+					<p>Название -
+						{{item.Name}}</p>
+					<p>Количество -
+						{{item.Count}}</p>
+					<p>Цена за штуку -
+						{{item.Price}}</p>
+					<p>Описание -
+						{{item.Description}}</p>
+				</div>
+			</aside>
+		{% endfor %}
+	{% else %}
+		<center>
+			<span style="color:yellow; font-size:30px;" class="cart-attention">Корзиной могут пользоваться только авторизованные пользователи!</span>
+		</center>
+	{% endif %}
+
+{% endblock %}

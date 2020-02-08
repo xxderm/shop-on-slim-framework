@@ -1,6 +1,7 @@
 <?php
 include_once "application/controllers/HomeController.php";
 include_once "application/controllers/AuthorizationController.php";
+include_once "application/controllers/CartController.php";
 require 'vendor/autoload.php';
 require 'vendor/psr/http-message/src/ServerRequestInterface.php';
 require 'vendor/psr/http-message/src/ResponseInterface.php';
@@ -49,7 +50,7 @@ $container['nav_bar'] = function ($c)
 {
     return array(
         array("href" => "/", "content" => "Products"),
-        array("href" => "#", "content" => "Cart"),
+        array("href" => "/Cart", "content" => "Cart"),
         array("href" => "#", "content" => "Orders"),
         array("href" => "#", "content" => "Append"),
         array("href" => "/SignUp", "content" => "Sign Up"),
@@ -80,6 +81,10 @@ $container['SignUpController'] = function ($c)
 {
     return new SignUpController($c);
 };
+$container['CartController'] = function ($c)
+{
+    return new CartController($c);
+};
 
 # Middleware
 $app->add(new \App\Middleware\CsrfViewMiddleware($container));
@@ -91,11 +96,9 @@ $app->add($container->csrf);
 $app->get('/', '\HomeController:index');
 $app->get('/catalog/{id}', '\HomeController:fromCatalog');
 
-
 # SignUp page
 $app->get('/SignUp', '\AuthorizationController:getSignUp')->setName('auth.signup');
 $app->post('/SignUp', '\AuthorizationController:postSignUp');
-
 
 # SignIn page
 $app->get('/SignIn', '\AuthorizationController:getSignIn')->setName('auth.signin');
@@ -104,6 +107,8 @@ $app->post('/SignIn', '\AuthorizationController:postSignIn');
 # SignOut page
 $app->get('/SignOut', '\AuthorizationController:getSignOut')->setName('auth.signout');
 
-
+# Cart page
+$app->get('/Cart', '\CartController:getCart')->setName('usr.cart');
+$app->get('/InsertToCart/{id}', '\CartController:Insert');
 
 $app->run();
