@@ -15,12 +15,11 @@
 		<form action="{{ auth.signup }}" method="post" autocomplete="off">
 			<h3>SignUp</h3>
 			<div class="form-group">
-
 				<label for="Name">
 					Name
 				</label><br/>
 				<input type="text" name="Name" id="Name" class="form-control">
-
+				<p style="color:red;">{{ NE }}</p>
 			</div>
 			<div class="form-group">
 
@@ -28,13 +27,15 @@
 					Email
 				</label><br/>
 				<input type="Email" name="Email" id="Email" placeholder="you@domain.com" class="form-control">
-
+				<p style="color:red;">{{ EE }}</p>
 			</div>
 			<div class="form-group">
 				<label for="Password">
 					Password
 				</label><br/>
 				<input type="Password" name="Password" id="Password" class="form-control">
+				<p style="color:red;">{{ PE }}</p>
+
 			</div><br/>
 			<button type="submit" class="btn">SignUp</button>
 

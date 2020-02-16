@@ -12,6 +12,7 @@ class Validator
             try
             {
                 $rule->setName(ucfirst($field))->assert($req->getParam($field));
+
             }
             catch (NestedValidationException $e)
             {
@@ -19,6 +20,14 @@ class Validator
             }
         }
         return $this;
+    }
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+    public function setError($estr)
+    {
+        $this->errors['Email'][0] = $estr;
     }
     public function failed()
     {

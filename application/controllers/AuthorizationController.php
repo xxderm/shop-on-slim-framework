@@ -10,6 +10,7 @@ class AuthorizationController
     public $db;
     public $csrf;
     public $auth;
+    public $capsule;
     function __construct($container)
     {
         $this->m_twig_container = $container['twig_c'];
@@ -17,6 +18,7 @@ class AuthorizationController
         $this->m_val_con = $container['validator'];
         $this->csrf = $container['csrf'];
         $this->auth = $container['auth'];
+        $this->capsule = $container['db'];
         $this->db = connection::getInstance();
     }
     public function getSignUp($req, $resp, $arg)
@@ -27,7 +29,10 @@ class AuthorizationController
             array(
                 'title' => 'SignUp',
                 'nav_list' => $this->m_nav_container,
-                'catalog_buff' => $catalogName
+                'catalog_buff' => $catalogName,
+                'EE' => $req->getParam('EE'),
+                'NE' => $req->getParam('NE'),
+                'PE' => $req->getParam('PE')
             ));
         return $resp;
     }
@@ -35,14 +40,22 @@ class AuthorizationController
     {
         $validation = $this->m_val_con->validate($req,
             [
-                'Email' => v::notEmpty(),
+                'Email' => v::notEmpty()->email(),
                 'Name' => v::notEmpty(),
                 'Password' => v::notEmpty()
             ]);
 
+        $isExist = $this->capsule->table('users')->where('Email', $req->getParam('Email'))->exists();
+        if($isExist)
+        {
+            $this->m_val_con->setError('Such mail already exists');
+            return $resp->withRedirect('/SignUp?EE='. $this->m_val_con->getErrors()['Email'][0]);
+        }
         if($this->m_val_con->failed())
         {
-            return $resp->withRedirect('/SignUp');
+            return $resp->withRedirect('/SignUp?EE='. $this->m_val_con->getErrors()['Email'][0]
+                                             .'&NE='. $this->m_val_con->getErrors()['Name'][0]
+                                             .'&PE='. $this->m_val_con->getErrors()['Password'][0]);
         }
 
         User::create(

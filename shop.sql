@@ -34,10 +34,6 @@ CREATE TABLE `cart` (
   `User_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `cart`
---
-
 INSERT INTO `cart` (`id`, `Product_id`, `User_id`) VALUES
 (19, 2, 14),
 (21, 2, 14),
@@ -118,10 +114,6 @@ CREATE TABLE `products` (
   `Discount` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `products`
---
-
 INSERT INTO `products` (`id`, `Catalog_id`, `Name`, `Count`, `Price`, `Image`, `Description`, `Discount`) VALUES
 (4, 2, 'GUESS', 26, 3490, '10810034-1.jpg', 'Опции капюшонабез капюшона\r\nУход за вещамибережная стирка при 30 градусах\r\nФактура материалатрикотажный\r\nПокройпрямой\r\nВид застежкибез застежки\r\nДлина изделия по спинке35 см\r\nКомплектациятолстовка\r\nПолДевочки\r\nСезондемисезон\r\nСтрана брендаСоединенные Штаты\r\nСтрана производительИндия', 0),
 (5, 2, 'Ekonika', 250, 12990, '10790751-1.jpg', 'натуральная кожа 100%\r\nПолнота обуви (EUR)F (6)\r\nМатериал стелькинатуральная кожа\r\nМатериал подошвы обувирезина\r\nМатериал подкладки обувибез подкладки; натуральная кожа\r\nВид застежкимолния\r\nВысота голенища11.5 см\r\nОбхват голенища25.8 см\r\nВысота каблука4 см\r\nКомплектацияботильоны\r\nПолЖенский\r\nСезондемисезон\r\nСтрана брендаРоссия\r\nСтрана производительКитай', 0),
@@ -136,11 +128,6 @@ INSERT INTO `products` (`id`, `Catalog_id`, `Name`, `Count`, `Price`, `Image`, `
 (14, 4, 'Оперативная память 16 ГБ 2 шт. HyperX HX426C13PB3K2/32', 25, 10918, '9hq (1).webp', '2 модуля памяти DDR4\r\nобъем модуля 16 ГБ\r\nформ-фактор DIMM, 288-контактный\r\nчастота 2666 МГц\r\nрадиатор\r\nCAS Latency (CL): 13', 5),
 (15, 4, 'Видеокарта GIGABYTE GeForce GTX 1660 SUPER 1830MHz PCI-E 3.0 6144MB 14000MHz 192 bit HDMI 3xDisplayPort HDCP OC', 64, 16590, '9hq (2).webp', 'видеокарта NVIDIA GeForce GTX 1660 SUPER\r\n6144 МБ видеопамяти GDDR6\r\nчастота ядра/памяти: 1830/14000 МГц\r\nразъемы HDMI, DisplayPort x3\r\nподдержка DirectX 12, OpenGL 4.6, Vulkan\r\nработа с 4 мониторами', 6);
 
--- --------------------------------------------------------
-
---
--- Структура таблицы `users`
---
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
@@ -151,10 +138,6 @@ CREATE TABLE `users` (
   `Reg_date` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Дамп данных таблицы `users`
---
-
 INSERT INTO `users` (`id`, `Fname`, `Email`, `Password`, `Role`, `Reg_date`) VALUES
 (8, 'TestName', 'TestEmail@gmail.com', '$2y$10$t0cLx7cvz/O8CJ2Rr36Ed.oQXNcr8l3syVwfguPFaeYShS6AClLxO', 'member', '2020-02-07 20:13:47'),
 (9, 'Ilyas', 'Test@gmail.com', '$2y$10$I2V1/4.t.bAm8DwgH2DSPekLUBMaIl8m9oME.BawW9avCcMFgZlC.', 'member', '2020-02-07 20:43:48'),
@@ -164,67 +147,35 @@ INSERT INTO `users` (`id`, `Fname`, `Email`, `Password`, `Role`, `Reg_date`) VAL
 (13, 'UserName', 'UserEmail@mail.ru', '$2y$12$V7X3hVmE3Jdz6dxIono55e6WUwoGSFpGNcY5hh5gdyCqUUwZkOKqO', 'member', '2020-02-08 00:49:24'),
 (14, 'Name', 'Name@mail.ru', '$2y$12$dcHF6pBbNbJzyMtoprqmtuhtWhvIJ20KrI2aKX1JdgiL1JNNUEPge', 'member', '2020-02-08 02:32:51');
 
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `cart`
---
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
---
--- Индексы таблицы `catalog`
---
+
 ALTER TABLE `catalog`
   ADD PRIMARY KEY (`id`);
 
---
--- Индексы таблицы `orders`
---
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
---
--- Индексы таблицы `products`
---
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
---
--- Индексы таблицы `users`
---
+
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `cart`
---
 ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
---
--- AUTO_INCREMENT для таблицы `catalog`
---
+
 ALTER TABLE `catalog`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT для таблицы `orders`
---
+
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
---
--- AUTO_INCREMENT для таблицы `products`
---
+
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT для таблицы `users`
---
+
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
