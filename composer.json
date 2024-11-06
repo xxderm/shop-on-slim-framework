@@ -1,6 +1,6 @@
 {
     "require": {
-        "twig/twig": "^1.0",
+        "twig/twig": "^3.11",
         "slim/csrf": "^1.0",
         "jeremykendall/slim-auth": "^1.0",
         "illuminate/database": "~6.20",
